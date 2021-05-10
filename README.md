@@ -1,8 +1,7 @@
 # PID-with-Closed-loop-and-Unit-Step
-*This program plots the Time Series Response of Closed Loop Control System with P, I , PI , PD and PID controls and Units Step Input
+*This program plots the Time Series Response of Closed Loop Control System with P, I , PI , PD and PID controls and Unit Step Input
 
-
-T*ime Series response of a closed loop control system with P,I, PI , PD and PID Controls under unit step signal input
+Time Series response of a closed loop control system with P,I, PI , PD and PID Controls under unit step signal input
 
  Input                                                     Output
  -->---(+-)--->--[Controller]--->---[Actuator+Plant]----->------
