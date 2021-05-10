@@ -16,7 +16,7 @@ The Values of Proportional, Integral and Differential Gains can be changed using
 
 If the input is a 1st order system , then the Time constant can also be changed using a Slider. 
 
-If you wish to view only specific plots , please select or unselect the legends(you can click on the legend color to do this)
+If you wish to view only specific plots , please sselect or unselect the legends(you can click on the legend color to do this)
 
 
 
