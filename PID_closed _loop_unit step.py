@@ -55,7 +55,7 @@ def plant_with_controller(plant,contr_part,name,plt_id):
     plt_id.set_ydata(res)
     plt_id.set_xdata(t)
 
-    return time_data,t,res
+    return time_data
 
 def slider_gains():
     Kp = Kp_Slider.val
@@ -74,9 +74,12 @@ def slider_gains():
 def val_update(val):
     time_res_char = pandas.DataFrame()
     Kp,Ki,Kd,Tc=slider_gains()
-    P = Kp
-    I = Ki/s
-    D= Kd*s
+
+    P = Kp  # Controller out = Kp * Error
+
+    I = Ki/s # Controller out = Ki * Error Ki = Kp/Ti - Ti is called Itegral Time and 1/Ti is called reset rate
+    D= Kd*s # Controller out = Kd * Error Kd = Kp*Td - Td is called derivative time
+
     """
     Specify the plant here.
     If you are giving the 1st order system , give it in the below format.
@@ -87,23 +90,23 @@ def val_update(val):
     # plant = 1/(Tc*s+1)
 
     #With PID Controller
-    time_data,t,res = plant_with_controller(plant,P+I+D,"PID",pid)
+    time_data= plant_with_controller(plant,P+I+D,"PID",pid)
     time_res_char = time_res_char.append(time_data,ignore_index=True)
 
     #With P controller
-    time_data,t,res = plant_with_controller(plant,P,"P",p)
+    time_data= plant_with_controller(plant,P,"P",p)
     time_res_char = time_res_char.append(time_data,ignore_index=True)
 
     #With I Controller
-    time_data,t,res= plant_with_controller(plant,I,"I",i)
+    time_data= plant_with_controller(plant,I,"I",i)
     time_res_char = time_res_char.append(time_data,ignore_index=True)
 
     #With PI Controller
-    time_data,t,res = plant_with_controller(plant,P+I,"PI",pi)
+    time_data= plant_with_controller(plant,P+I,"PI",pi)
     time_res_char = time_res_char.append(time_data,ignore_index=True)
     
     #With PD Controller
-    time_data,t,res = plant_with_controller(plant,P+D,"PD",pd)
+    time_data = plant_with_controller(plant,P+D,"PD",pd)
     time_res_char = time_res_char.append(time_data,ignore_index=True)
 
     time_res_char=time_res_char.set_index("Controller")
