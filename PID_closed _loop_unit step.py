@@ -28,21 +28,16 @@ import numpy as np
 
 
 def scaling_func():
-    #This function automatically sets the axes ranges
-
+    #Automatically sets the axes ranges
     legend_logic = {"P":(p,p.get_visible()),"I":(i,i.get_visible()),"PI":(pi,pi.get_visible()),"PD":(pd,pd.get_visible()),"PID":(pid,pid.get_visible())}
     x_max=0
     y_max=0
     for key in legend_logic:
         if legend_logic[key][1]:
             x,y=legend_logic[key][0].get_data()
-            # print(x)
-            if x.max() > x_max:
-                x_max= x.max()
-            else:
-                pass
-            if y.max()>y_max:
-                y_max=y.max()
+            if x.max() > x_max:x_max= x.max()
+            else:pass
+            if y.max()>y_max:y_max=y.max()
 
     ax.set_xlim(0,x_max)
     ax.set_ylim(0,y_max+0.2)
@@ -164,13 +159,11 @@ if __name__ == "__main__":
     axSliderKi =plt.axes([0.1,0.2,0.8,0.05])
     axSliderKd =plt.axes([0.1,0.1,0.8,0.05])
     axSliderTimeConst = plt.axes([0.95,0.4,0.04,0.5])
-
     #Slider Settings 
     Kp_Slider = Slider(axSliderKp,"Kp",valmin =0,valmax=200,valinit=5.5,valfmt = "%1.1f",valstep=0.1,color="cyan",closedmin=False)
     Ki_Slider = Slider(axSliderKi,"Ki",valmin =0,valmax=20,valinit=2.4,valfmt = "%1.2f",valstep=0.01,color="magenta",closedmin=False)
     Kd_Slider = Slider(axSliderKd,"Kd",valmin =0,valmax=10,valinit =8.2,valfmt = "%1.2f",valstep=0.01,color ="yellow",closedmin=False)
     Tc_Slider = Slider(axSliderTimeConst,"Tc",valmin =0.0001,valmax=100,valinit =1,valfmt = "%1.5f",valstep=0.01,color ="orange",closedmin=True,orientation='vertical')
-
     #This part is to enable the selecting and unselecting the graphs from the legends. By default all the graphs are enabled
     lines = [p,i,pi,pd,pid]
     lined = dict()
@@ -180,12 +173,10 @@ if __name__ == "__main__":
         
     # Calling the onpick function once the legends are clicked
     fig.canvas.mpl_connect('pick_event', onpick) 
-
     # calling the val_update func if the sliders are moved
     Kp_Slider.on_changed(val_update)
     Ki_Slider.on_changed(val_update)
     Kd_Slider.on_changed(val_update)
     Tc_Slider.on_changed(val_update)
     
-
     plt.show()
