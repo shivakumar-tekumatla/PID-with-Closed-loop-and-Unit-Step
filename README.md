@@ -10,4 +10,4 @@ If the input is a 1st order system , then the Time constant can also be changed 
 
 If you wish to view only specific plots , please select or unselect the legends(you can click on the legend color to do this)
 
-<img src =' https://media.githubusercontent.com/media/shivakumar-tekumatla/shivakumar-tekumatla.github.io/master/files/GIFs/PID.gif'>
+<img src ='https://media.githubusercontent.com/media/shivakumar-tekumatla/shivakumar-tekumatla.github.io/master/files/GIFs/PID.gif'>
